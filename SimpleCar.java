@@ -1,6 +1,7 @@
 package simple.carproject;
 
-//import java.util.scanner;
+import java.util.Scanner;
+
 /*
 public class SimpleCar {
   //These are INITIALIZED, INSTANCE variables, available to objects of the
