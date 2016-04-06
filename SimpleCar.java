@@ -28,10 +28,12 @@ public class SimpleCar {
     }
   }
 
-  public void accelerate()throws Exception { 
+  public void accelerate(String accelAmount)throws Exception { 
+    int increaseBy = Integer.parseInt(accelAmount);
+    System.out.println("You are going to accelerate by " + increaseBy + "MPH.");
     if (isCarStarted && gasLevel > 0) {
       System.out.println("Found the long, skinny pedal. Pressing it!");
-        speed = speed + 5;
+        speed = (speed + increaseBy);
         gasLevel = gasLevel - 1;
       }
       else {

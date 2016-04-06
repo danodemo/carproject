@@ -14,10 +14,10 @@ public class SimpleDriver {
       System.out.println("6. Exit");
       System.out.println("7. Activate the Hellgate");
   }
-  
-  public static void playGame(){
-    //GET CAR INFO STARTS HERE
+
+  public static SimpleCar buildCar(){
     Scanner lineScanner = new Scanner(System.in);
+    //GET CAR INFO STARTS HERE
     System.out.println("What color is your car?");
       String carColor = lineScanner.nextLine();
     System.out.println("Alright, your car is " + carColor + "!");
@@ -33,7 +33,12 @@ public class SimpleDriver {
     System.out.println("");
     System.out.println("Alright, your car is a " + carColor + " " + carMake + " " + carModel + "!");
     //CAR INFO ENDS HERE
-
+    return yourCar;
+  }
+  
+  public static void playGame(){
+    Scanner lineScanner = new Scanner(System.in);
+    SimpleCar yourCar = buildCar();
     //DESTINATION INFO STARTS HERE
     String destination = " "; //destination
     int distance = 0; //distance to travel = 1 to 1 with gasLevel
@@ -85,8 +90,10 @@ public class SimpleDriver {
         yourCar.startCar();
       }
       else if (userChoseOptionTwo) {
+        System.out.println("How fast should we go? Choose any number 1-60");
+        String accelAmount = lineScanner.nextLine();
           try {
-          yourCar.accelerate();
+          yourCar.accelerate(accelAmount);
         } catch (Exception myCustomException){
           System.out.println(myCustomException.getMessage()); 
           //myCustomException.printStackTrace(); 
