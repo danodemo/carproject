@@ -35,10 +35,22 @@ public class SimpleDriver {
     //CAR INFO ENDS HERE
     return yourCar;
   }
+
+  public static SimpleCar[] buildGarage() {
+    SimpleCar[] garage = new SimpleCar[3];
+    for (int carIndex = 0; carIndex < 3; carIndex++){
+      System.out.println("Let's build some cars for our garage!");
+      SimpleCar yourCar = buildCar();
+      garage[carIndex] = yourCar;
+    }
+    System.out.println("That's good; our garage only holds 3 cars.");
+    return garage;
+  }
   
-  public static void playGame(){
+  public static void playGame(SimpleCar myCar){
     Scanner lineScanner = new Scanner(System.in);
-    SimpleCar yourCar = buildCar();
+    SimpleCar yourCar = myCar;
+    //SimpleCar yourCar = buildCar();
     //DESTINATION INFO STARTS HERE
     String destination = " "; //destination
     int distance = 0; //distance to travel = 1 to 1 with gasLevel
@@ -128,6 +140,16 @@ public class SimpleDriver {
     System.out.println("Welcome to the Garage!");
     System.out.println("Let's build your dream car and take it for a spin!");
     //wait or Clear Screen
-    playGame();
+    SimpleCar[] myCars = buildGarage();
+    System.out.println("Great!  Now that you'd built some cars, let's pick one to drive!");
+    System.out.println("Choose your car:");
+    System.out.println("1. The " + myCars[0].make + " " + myCars[0].model);
+    System.out.println("2. The " + myCars[1].make + " " + myCars[1].model);
+    System.out.println("3. The " + myCars[2].make + " " + myCars[2].model);
+    Scanner lineScanner = new Scanner(System.in);
+    String userAction = lineScanner.nextLine();
+    int carChoice = (Integer.parseInt(userAction) - 1);
+    SimpleCar myCar = myCars[carChoice];
+    playGame(myCar);
   }
 }
